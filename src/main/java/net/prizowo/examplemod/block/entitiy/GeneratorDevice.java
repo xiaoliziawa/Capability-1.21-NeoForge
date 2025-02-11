@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<GeneratorDevice> {
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
@@ -80,7 +81,7 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
     }
 
     @Override
-    public void tick(Level level, BlockPos pos, BlockState state, GeneratorDevice blockEntity) {
+    public void tick(Level level, @NotNull BlockPos pos, @NotNull BlockState state, @NotNull GeneratorDevice blockEntity) {
         if (!level.isClientSide) {
             boolean wasActive = isBurning;
             
@@ -119,7 +120,7 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
     private void outputEnergy() {
         for (Direction direction : Direction.values()) {
             BlockPos targetPos = getBlockPos().relative(direction);
-            IEnergyStorage targetStorage = level.getCapability(Capabilities.EnergyStorage.BLOCK, 
+            IEnergyStorage targetStorage = level.getCapability(Capabilities.EnergyStorage.BLOCK,
                 targetPos, direction.getOpposite());
 
             if (targetStorage != null && targetStorage.canReceive()) {
@@ -172,7 +173,7 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.saveAdditional(tag, registries);
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("burn_time", burnTime);
@@ -182,7 +183,7 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         burnTime = tag.getInt("burn_time");
