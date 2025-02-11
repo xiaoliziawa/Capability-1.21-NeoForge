@@ -21,17 +21,14 @@ public class GeneratorMenu extends AbstractContainerMenu {
         this.blockEntity = (GeneratorDevice) entity;
         this.data = data;
 
-        // 添加燃料槽
         addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 80, 35));
 
-        // 添加玩家物品栏
         for(int row = 0; row < 3; row++) {
             for(int col = 0; col < 9; col++) {
                 addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
             }
         }
 
-        // 添加玩家快捷栏
         for(int col = 0; col < 9; col++) {
             addSlot(new Slot(inventory, col, 8 + col * 18, 142));
         }
@@ -47,7 +44,6 @@ public class GeneratorMenu extends AbstractContainerMenu {
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
-        // 实现Shift+点击逻辑
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
 

@@ -62,7 +62,6 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
         }
     }
 
-    // 使用自定义的能量存储
     // 容量: 100,000 FE
     // 最大输入: 1,000 FE/t
     // 最大输出: 1,000 FE/t
@@ -86,7 +85,6 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
             boolean wasActive = isBurning;
             
             if (isBurning) {
-                // 正在燃烧
                 energyStorage.receiveEnergy(getFuelPowerOutput(), false);
                 burnTime--;
                 if (burnTime <= 0) {
@@ -95,7 +93,6 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
             }
 
             if (!isBurning) {
-                // 检查是否可以开始新的燃烧
                 ItemStack fuel = itemHandler.getStackInSlot(0);
                 if (!fuel.isEmpty()) {
                     int burnValue = getBurnTime(fuel);
@@ -108,15 +105,13 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
                 }
             }
 
-            // 如果燃烧状态改变，更新方块状态
             if (wasActive != isBurning) {
                 level.setBlock(pos, 
                     state.setValue(BlockStateProperties.LIT, isBurning), 
-                    Block.UPDATE_ALL);  // 使用 UPDATE_ALL 来确保光照更新
+                    Block.UPDATE_ALL);
                 setChanged();
             }
 
-            // 尝试输出能量到周围方块
             outputEnergy();
         }
     }
@@ -141,7 +136,6 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
     }
 
     private int getBurnTime(ItemStack stack) {
-        // 临时使用原版熔炉的燃烧时间逻辑
         if (stack.isEmpty()) {
             return 0;
         }

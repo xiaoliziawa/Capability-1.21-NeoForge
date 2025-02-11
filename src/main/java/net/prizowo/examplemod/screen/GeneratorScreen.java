@@ -24,22 +24,18 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorMenu> {
         int y = (height - imageHeight) / 2;
 
         try {
-            // 尝试渲染主背景
             graphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-            // 渲染燃烧进度条
             if (menu.getTotalBurnTime() > 0) {
                 int burnProgress = menu.getBurnTime() * 13 / Math.max(1, menu.getTotalBurnTime());
                 graphics.blit(TEXTURE, x + 81, y + 54 + 12 - burnProgress, 
                     176, 12 - burnProgress, 14, burnProgress + 1);
             }
 
-            // 渲染能量条
             int energyHeight = menu.getEnergy() * 50 / Math.max(1, menu.getMaxEnergy());
             graphics.blit(TEXTURE, x + 154, y + 17 + (50 - energyHeight), 
                 176, 31, 16, energyHeight);
         } catch (Exception e) {
-            // 如果主纹理加载失败，使用原版的缺失纹理
             graphics.blit(MISSING_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
         }
     }
@@ -50,7 +46,6 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorMenu> {
         super.render(graphics, mouseX, mouseY, delta);
         renderTooltip(graphics, mouseX, mouseY);
 
-        // 添加能量提示
         if (mouseX >= leftPos + 154 && mouseX <= leftPos + 170 &&
             mouseY >= topPos + 17 && mouseY <= topPos + 67) {
             graphics.renderTooltip(font, Component.literal(
