@@ -7,14 +7,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.prizowo.examplemod.ExampleMod;
 import net.prizowo.examplemod.block.FluidTankBlock;
 import net.prizowo.examplemod.block.GeneratorBlock;
 
 import java.util.function.Supplier;
 
 public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, "examplemod");
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, "examplemod");
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, ExampleMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, ExampleMod.MODID);
 
     public static final Supplier<Block> FLUID_TANK = BLOCKS.register("fluid_tank",
             () -> new FluidTankBlock(BlockBehaviour.Properties.of()

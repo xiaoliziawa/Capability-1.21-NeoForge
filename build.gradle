@@ -102,6 +102,7 @@ dependencies {
     implementation "blank:Mekanism-1.21.1:10.7.8.70"
     implementation "blank:JadeAddons-1.21.1:6.0.1"
     implementation "blank:Jade-1.21.1-15.9.3"
+    implementation "blank:Pipez-1.21.1-1.2.19"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
