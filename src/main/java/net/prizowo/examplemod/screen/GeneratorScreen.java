@@ -12,7 +12,7 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorMenu> {
     private static final ResourceLocation TEXTURE = 
         ResourceLocation.fromNamespaceAndPath(ExampleMod.MODID, "textures/gui/generator.png");
     private static final ResourceLocation MISSING_TEXTURE = 
-        ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/unknown_pack.png");
+        ResourceLocation.withDefaultNamespace("textures/misc/unknown_pack.png");
 
     public GeneratorScreen(GeneratorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
