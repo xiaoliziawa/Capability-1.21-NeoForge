@@ -7,13 +7,16 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.prizowo.examplemod.block.entitiy.GeneratorDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
+import net.prizowo.examplemod.registry.ModMenuTypes;
 
 @Mod("examplemod")
 public class ExampleMod {
+    public static final String MODID = "examplemod";
     public ExampleMod(IEventBus modEventBus) {
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModBlocks.ITEMS.register(modEventBus);
+        ModMenuTypes.MENU_TYPES.register(modEventBus);
         
         modEventBus.addListener(this::registerCapabilities);
     }

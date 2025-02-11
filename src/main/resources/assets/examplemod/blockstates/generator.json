@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "lit=false": {
+        "model": "examplemod:block/generator"
+      },
+      "lit=true": {
+        "model": "examplemod:block/generator_lit"
+      }
+    }
+  }
