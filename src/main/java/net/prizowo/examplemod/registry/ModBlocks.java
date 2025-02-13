@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.ExampleMod;
+import net.prizowo.examplemod.block.BatteryBlock;
 import net.prizowo.examplemod.block.FluidTankBlock;
 import net.prizowo.examplemod.block.GeneratorBlock;
 
@@ -34,4 +35,13 @@ public class ModBlocks {
 
     public static final Supplier<Item> GENERATOR_ITEM = ITEMS.register("generator",
             () -> new BlockItem(GENERATOR.get(), new Item.Properties()));
+
+    public static final Supplier<Block> BATTERY = BLOCKS.register("battery",
+            () -> new BatteryBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()));
+
+    public static final Supplier<Item> BATTERY_ITEM = ITEMS.register("battery",
+            () -> new BlockItem(BATTERY.get(), new Item.Properties()));
 }

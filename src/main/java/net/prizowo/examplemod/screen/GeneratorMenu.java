@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import net.prizowo.examplemod.block.entitiy.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 import org.jetbrains.annotations.NotNull;

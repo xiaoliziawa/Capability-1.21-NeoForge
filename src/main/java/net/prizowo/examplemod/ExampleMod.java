@@ -4,7 +4,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.prizowo.examplemod.block.entitiy.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.BatteryDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModMenuTypes;
@@ -31,7 +32,13 @@ public class ExampleMod {
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
             ModBlockEntities.GENERATOR.get(),
-                GeneratorDevice::getEnergyStorage
+            GeneratorDevice::getEnergyStorage
+        );
+
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            ModBlockEntities.BATTERY.get(),
+                BatteryDevice::getEnergyStorage
         );
     }
 }

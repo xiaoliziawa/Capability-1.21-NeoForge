@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.fluids.FluidUtil;
-import net.prizowo.examplemod.block.entitiy.FluidTankDevice;
+import net.prizowo.examplemod.block.entity.FluidTankDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

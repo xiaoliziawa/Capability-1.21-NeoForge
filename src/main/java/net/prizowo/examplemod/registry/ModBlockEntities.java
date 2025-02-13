@@ -3,8 +3,9 @@ package net.prizowo.examplemod.registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.prizowo.examplemod.block.entitiy.FluidTankDevice;
-import net.prizowo.examplemod.block.entitiy.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.FluidTankDevice;
+import net.prizowo.examplemod.block.entity.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.BatteryDevice;
 
 import java.util.function.Supplier;
 
@@ -22,5 +23,11 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.<GeneratorDevice>of(
                     (pos, state) -> new GeneratorDevice(ModBlockEntities.GENERATOR.get(), pos, state),
                     ModBlocks.GENERATOR.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<BatteryDevice>> BATTERY = BLOCK_ENTITIES.register("battery",
+            () -> BlockEntityType.Builder.<BatteryDevice>of(
+                    (pos, state) -> new BatteryDevice(ModBlockEntities.BATTERY.get(), pos, state),
+                    ModBlocks.BATTERY.get()
             ).build(null));
 }

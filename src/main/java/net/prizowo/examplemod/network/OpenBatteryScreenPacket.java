@@ -11,18 +11,18 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.prizowo.examplemod.ExampleMod;
-import net.prizowo.examplemod.block.entity.GeneratorDevice;
-import net.prizowo.examplemod.screen.GeneratorMenu;
+import net.prizowo.examplemod.block.entity.BatteryDevice;
+import net.prizowo.examplemod.screen.BatteryMenu;
 import org.jetbrains.annotations.NotNull;
 
-public record OpenGeneratorScreenPacket(BlockPos pos) implements CustomPacketPayload {
-    public static final Type<OpenGeneratorScreenPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(ExampleMod.MODID, "open_generator_screen"));
+public record OpenBatteryScreenPacket(BlockPos pos) implements CustomPacketPayload {
+    public static final Type<OpenBatteryScreenPacket> TYPE = new Type<>(
+        ResourceLocation.fromNamespaceAndPath(ExampleMod.MODID, "open_battery_screen"));
 
-    public static final StreamCodec<FriendlyByteBuf, OpenGeneratorScreenPacket> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<FriendlyByteBuf, OpenBatteryScreenPacket> STREAM_CODEC = StreamCodec.composite(
         StreamCodec.of(
             (buf, pos) -> {
                 buf.writeInt(pos.getX());
@@ -31,24 +31,24 @@ public record OpenGeneratorScreenPacket(BlockPos pos) implements CustomPacketPay
             },
             buf -> new BlockPos(buf.readInt(), buf.readInt(), buf.readInt())
         ),
-        OpenGeneratorScreenPacket::pos,
-        OpenGeneratorScreenPacket::new
+        OpenBatteryScreenPacket::pos,
+        OpenBatteryScreenPacket::new
     );
 
-    public static void handle(final OpenGeneratorScreenPacket data, final IPayloadContext ctx) {
+    public static void handle(final OpenBatteryScreenPacket data, final IPayloadContext ctx) {
         ctx.enqueueWork(() -> {
             if (ctx.player() instanceof ServerPlayer serverPlayer) {
                 BlockEntity be = serverPlayer.level().getBlockEntity(data.pos);
-                if (be instanceof GeneratorDevice) {
+                if (be instanceof BatteryDevice) {
                     MenuProvider containerProvider = new MenuProvider() {
                         @Override
                         public @NotNull Component getDisplayName() {
-                            return Component.translatable("screen.examplemod.generator");
+                            return Component.translatable("screen.examplemod.battery");
                         }
 
                         @Override
                         public AbstractContainerMenu createMenu(int windowId, @NotNull Inventory playerInventory, @NotNull Player playerEntity) {
-                            return new GeneratorMenu(windowId, playerInventory, be, new SimpleContainerData(4));
+                            return new BatteryMenu(windowId, playerInventory, be, ((BatteryDevice) be).getContainerData());
                         }
                     };
                     
@@ -59,8 +59,7 @@ public record OpenGeneratorScreenPacket(BlockPos pos) implements CustomPacketPay
     }
 
     @Override
-    @NotNull
-    public Type<? extends CustomPacketPayload> type() {
+    public @NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-} 
+}

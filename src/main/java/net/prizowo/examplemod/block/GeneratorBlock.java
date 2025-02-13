@@ -19,7 +19,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
-import net.prizowo.examplemod.block.entitiy.GeneratorDevice;
+import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.network.OpenGeneratorScreenPacket;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import org.jetbrains.annotations.NotNull;

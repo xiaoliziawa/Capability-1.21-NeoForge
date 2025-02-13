@@ -18,5 +18,11 @@ public class NetworkHandler {
             OpenGeneratorScreenPacket.STREAM_CODEC,
             OpenGeneratorScreenPacket::handle
         );
+
+        registrar.playToServer(
+            OpenBatteryScreenPacket.TYPE,
+            OpenBatteryScreenPacket.STREAM_CODEC,
+            OpenBatteryScreenPacket::handle
+        );
     }
 } 

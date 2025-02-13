@@ -1,4 +1,4 @@
-package net.prizowo.examplemod.block.entitiy;
+package net.prizowo.examplemod.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
