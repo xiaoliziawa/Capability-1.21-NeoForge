@@ -15,28 +15,39 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = ExampleMod.MODID, bus = EventBusSubscriber.Bus.GAME)
-public class RecipeRemover {
+public class Recipes {
     private static final Set<String> MODS_TO_REMOVE = new HashSet<>();
     private static final Set<ResourceLocation> RECIPES_TO_REMOVE = new HashSet<>();
 
     /**
-     * 添加要删除所有配方的模组ID 例如: "mekanism"
+     * 删除模组的所有配方
+     * 例如: removeMod("mekanism");
      */
-    public static void addModToRemove(String modId) {
+    public static void removeMod(String modId) {
         MODS_TO_REMOVE.add(modId);
     }
 
     /**
-     * 添加要删除的配方物品ID 例如: "minecraft:furnace"
+     * 删除物品ID的配方
+     * 例如: removeItemId("minecraft:diamond_block");
      */
-    public static void addRecipeToRemove(String recipeId) {
+    public static void removeItemId(String itemId) {
+        RECIPES_TO_REMOVE.add(ResourceLocation.parse(itemId));
+    }
+
+    /**
+     * 删除配方ID的配方
+     * 例如: removeRecipe("mekanism:factory/advanced/purifying");
+     */
+    public static void removeRecipe(String recipeId) {
         RECIPES_TO_REMOVE.add(ResourceLocation.parse(recipeId));
     }
 
     /**
-     * 添加要删除的配方,指定命名空间和物品ID 例如: "minecraft", "furnace"
+     * 删除指定命名空间和路径的配方
+     * 例如: removeRecipe("minecraft", "furnace");
      */
-    public static void addRecipeToRemove(String namespace, String path) {
+    public static void removeRecipe(String namespace, String path) {
         RECIPES_TO_REMOVE.add(ResourceLocation.fromNamespaceAndPath(namespace, path));
     }
 

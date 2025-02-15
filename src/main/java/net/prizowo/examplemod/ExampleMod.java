@@ -13,6 +13,8 @@ import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 
+import static net.prizowo.examplemod.recipe.Recipes.*;
+
 @Mod("examplemod")
 public class ExampleMod {
     public static final String MODID = "examplemod";
@@ -25,10 +27,15 @@ public class ExampleMod {
 
         modEventBus.addListener(this::registerCapabilities);
 
-//         RecipeRemover.addModToRemove("mekanism");
-//
-//         RecipeRemover.addRecipeToRemove("minecraft:furnace");
-//         RecipeRemover.addRecipeToRemove("somemod", "some_recipe");
+        // removeMod("mekanism");
+        // removeMod("farmersdelight");
+
+        // removeRecipe("mekanism:factory/advanced/purifying");
+
+        // removeItemId("minecraft:diamond_block");
+        // removeItemId("minecraft:diamond_sword");
+
+        // removeRecipe("minecraft", "furnace");
     }
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(
