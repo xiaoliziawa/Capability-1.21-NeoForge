@@ -1,4 +1,3 @@
 {
-  "tooltip.examplemod.energy": "能量: %d / %d FE",
-  "tooltip.examplemod.chemical": "蒸汽: %d %s"
+  "itemGroup.examplemod.creative": "示例模组"
 } 

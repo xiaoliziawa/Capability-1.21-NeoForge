@@ -10,6 +10,7 @@ import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
+import net.prizowo.examplemod.registry.ModCreativeTab;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 
 @Mod("examplemod")
@@ -20,10 +21,15 @@ public class ExampleMod {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModBlocks.ITEMS.register(modEventBus);
         ModMenuTypes.MENU_TYPES.register(modEventBus);
+        ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
-    }
 
+//         RecipeRemover.addModToRemove("mekanism");
+//
+//         RecipeRemover.addRecipeToRemove("minecraft:furnace");
+//         RecipeRemover.addRecipeToRemove("somemod", "some_recipe");
+    }
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,
@@ -43,42 +49,36 @@ public class ExampleMod {
             BatteryDevice::getEnergyStorage
         );
 
-        // 注册熔炉的能量存储功能
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
             BlockEntityType.FURNACE,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getEnergyStorage(direction)
         );
 
-        // 注册高炉的能量存储功能
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
             BlockEntityType.BLAST_FURNACE,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getEnergyStorage(direction)
         );
 
-        // 注册烟熏炉的能量存储功能
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
             BlockEntityType.SMOKER,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getEnergyStorage(direction)
         );
 
-        // 注册熔炉的化学品处理功能
         event.registerBlockEntity(
             mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
             BlockEntityType.FURNACE,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getChemicalStorage(direction)
         );
 
-        // 注册高炉的化学品处理功能
         event.registerBlockEntity(
             mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
             BlockEntityType.BLAST_FURNACE,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getChemicalStorage(direction)
         );
 
-        // 注册烟熏炉的化学品处理功能
         event.registerBlockEntity(
             mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
             BlockEntityType.SMOKER,
