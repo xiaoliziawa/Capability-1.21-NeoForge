@@ -31,17 +31,16 @@ public enum FurnaceProvider implements IBlockComponentProvider, IServerDataProvi
             int energy = data.getInt("energy");
             int maxEnergy = data.getInt("maxEnergy");
 
-            // Build
             IElementHelper helper = IElementHelper.get();
             IElement energyBar = helper.progress(
-                    energy / (float) maxEnergy,  // 进度值 (0-1)
-                    Component.literal(energy + " / " + maxEnergy + " FE"), // 悬停文本
+                    energy / (float) maxEnergy,  // 进度
+                    Component.literal(energy + " / " + maxEnergy + " FE"), // 文本
                     helper
                             .progressStyle()
                             .color(0xFF3498DB)  // 蓝色进度条
                             .textColor(0xFFFFFFFF),  // 白色文本
                     BoxStyle.GradientBorder.DEFAULT_NESTED_BOX,  //盒子样式
-                    true  //  ->是否显示文本
+                    true  //  是否显示文本
             );
             tooltip.add(energyBar);
         }
