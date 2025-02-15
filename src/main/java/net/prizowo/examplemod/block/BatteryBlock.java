@@ -46,8 +46,7 @@ public class BatteryBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos,
-                                                       @NotNull Player player, @NotNull BlockHitResult hitResult) {
+    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hitResult) {
         if (level.isClientSide) {
             PacketDistributor.sendToServer(new OpenBatteryScreenPacket(pos));
         }
