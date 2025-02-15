@@ -103,6 +103,8 @@ dependencies {
     implementation "blank:JadeAddons-1.21.1:6.0.1"
     implementation "blank:Jade-1.21.1-15.9.3"
     implementation "blank:Pipez-1.21.1-1.2.19"
+    implementation "blank:FarmersDelight-1.21.1:1.2.7"
+    implementation "blank:jei-1.21.1:19.21.0.247"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

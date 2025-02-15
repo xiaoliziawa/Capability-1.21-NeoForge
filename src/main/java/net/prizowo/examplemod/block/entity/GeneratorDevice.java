@@ -63,7 +63,6 @@ public class GeneratorDevice extends BlockEntity implements BlockEntityTicker<Ge
                 default -> 0;
             };
         }
-
         @Override
         public void set(int index, int value) {
             switch (index) {
