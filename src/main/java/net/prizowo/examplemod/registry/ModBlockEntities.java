@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.block.entity.FluidTankDevice;
 import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
+import net.prizowo.examplemod.block.entity.ChemicalPipeTileEntity;
 
 import java.util.function.Supplier;
 
@@ -29,5 +30,11 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.<BatteryDevice>of(
                     (pos, state) -> new BatteryDevice(ModBlockEntities.BATTERY.get(), pos, state),
                     ModBlocks.BATTERY.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<ChemicalPipeTileEntity>> CHEMICAL_PIPE = BLOCK_ENTITIES.register("chemical_pipe",
+            () -> BlockEntityType.Builder.<ChemicalPipeTileEntity>of(
+                    ChemicalPipeTileEntity::new,
+                    ModBlocks.CHEMICAL_PIPE.get()
             ).build(null));
 }

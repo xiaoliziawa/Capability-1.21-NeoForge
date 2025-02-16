@@ -9,6 +9,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.ExampleMod;
 import net.prizowo.examplemod.block.BatteryBlock;
+import net.prizowo.examplemod.block.ChemicalPipeBlock;
 import net.prizowo.examplemod.block.FluidTankBlock;
 import net.prizowo.examplemod.block.GeneratorBlock;
 
@@ -44,4 +45,14 @@ public class ModBlocks {
 
     public static final Supplier<Item> BATTERY_ITEM = ITEMS.register("battery",
             () -> new BlockItem(BATTERY.get(), new Item.Properties()));
+
+    public static final Supplier<Block> CHEMICAL_PIPE = BLOCKS.register("chemical_pipe",
+            () -> new ChemicalPipeBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(2.0f)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()));
+
+    public static final Supplier<Item> CHEMICAL_PIPE_ITEM = ITEMS.register("chemical_pipe",
+            () -> new BlockItem(CHEMICAL_PIPE.get(), new Item.Properties()));
 }

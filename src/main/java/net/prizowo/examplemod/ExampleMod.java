@@ -6,6 +6,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.prizowo.examplemod.api.IEnergyFurnace;
+import net.prizowo.examplemod.block.entity.ChemicalPipeTileEntity;
 import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
@@ -90,6 +91,12 @@ public class ExampleMod {
             mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
             BlockEntityType.SMOKER,
             (blockEntity, direction) -> ((IEnergyFurnace)blockEntity).getChemicalStorage(direction)
+        );
+
+        event.registerBlockEntity(
+            mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
+            ModBlockEntities.CHEMICAL_PIPE.get(),
+            (blockEntity, direction) -> ((ChemicalPipeTileEntity)blockEntity).getChemicalHandler(direction)
         );
     }
 }
