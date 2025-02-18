@@ -2,7 +2,6 @@ package net.prizowo.examplemod.item.storage;
 
 import appeng.api.stacks.AEKeyType;
 import appeng.items.storage.BasicStorageCell;
-import appeng.me.cells.BasicCellInventory;
 import appeng.util.Platform;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
