@@ -25,24 +25,18 @@ public class ModCreativeTab {
                     .icon(() -> new ItemStack(Blocks.FURNACE))
                     .title(Component.translatable("itemGroup." + ExampleMod.MODID + ".creative"))
                     .displayItems((parameters, output) -> {
-                        ModBlocks.BLOCKS.getEntries().forEach(block -> {
-                            Item blockItem = block.get().asItem();
-                            if (blockItem != null) {
-                                output.accept(new ItemStack(blockItem));
-                            }
-                        });
+                        // 注册所有方块物品
+                        ModBlockItems.ITEMS.getEntries().forEach(item ->
+                                output.accept(new ItemStack(item.get())));
 
+                        // 注册原版熔炉
                         addBlock(Blocks.FURNACE);
 
-                        ModItems.ITEMS.getEntries().forEach(item -> {
-                            Item itemItem = item.get();
-                            if (itemItem != null) {
-                                output.accept(new ItemStack(itemItem));
-                            }
-                        });
-
-                        ModBlocks.ITEMS.getEntries().forEach(item ->
+                        // 注册其他物品
+                        ModItems.ITEMS.getEntries().forEach(item ->
                                 output.accept(new ItemStack(item.get())));
+
+                        // 注册额外物品
                         ADDITIONAL_ITEMS.forEach(itemStack ->
                                 output.accept(itemStack.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
                     })

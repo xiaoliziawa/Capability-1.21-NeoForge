@@ -1,11 +1,11 @@
 {
   "itemGroup.examplemod.creative": "示例模组",
-  "block.examplemod.chemical_pipe": "化学品管道",
+  "block.examplemod.chemical_pipe": "化学管道",
   "block.examplemod.fluid_tank": "流体储罐",
   "block.examplemod.generator": "发电机",
   "block.examplemod.battery": "电池",
   "block.examplemod.creative_controller": "创造模式ME控制器",
-  
+
   "item.examplemod.cell_component_1m": "1M ME存储组件",
   "item.examplemod.cell_component_4m": "4M ME存储组件",
   "item.examplemod.cell_component_16m": "16M ME存储组件",

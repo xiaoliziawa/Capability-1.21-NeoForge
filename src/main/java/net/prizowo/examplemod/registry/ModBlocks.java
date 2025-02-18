@@ -1,8 +1,6 @@
 package net.prizowo.examplemod.registry;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -18,7 +16,6 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, ExampleMod.MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, ExampleMod.MODID);
 
     public static final Supplier<Block> FLUID_TANK = BLOCKS.register("fluid_tank",
             () -> new FluidTankBlock(BlockBehaviour.Properties.of()
@@ -26,26 +23,17 @@ public class ModBlocks {
                     .strength(3.0f)
                     .requiresCorrectToolForDrops()));
 
-    public static final Supplier<Item> FLUID_TANK_ITEM = ITEMS.register("fluid_tank",
-            () -> new BlockItem(FLUID_TANK.get(), new Item.Properties()));
-
     public static final Supplier<Block> GENERATOR = BLOCKS.register("generator",
             () -> new GeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(3.0f)
                     .requiresCorrectToolForDrops()));
 
-    public static final Supplier<Item> GENERATOR_ITEM = ITEMS.register("generator",
-            () -> new BlockItem(GENERATOR.get(), new Item.Properties()));
-
     public static final Supplier<Block> BATTERY = BLOCKS.register("battery",
             () -> new BatteryBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(3.0f)
                     .requiresCorrectToolForDrops()));
-
-    public static final Supplier<Item> BATTERY_ITEM = ITEMS.register("battery",
-            () -> new BlockItem(BATTERY.get(), new Item.Properties()));
 
     public static final Supplier<Block> CHEMICAL_PIPE = BLOCKS.register("chemical_pipe",
             () -> new ChemicalPipeBlock(BlockBehaviour.Properties.of()
@@ -54,10 +42,6 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .noOcclusion()));
 
-    public static final Supplier<Item> CHEMICAL_PIPE_ITEM = ITEMS.register("chemical_pipe",
-            () -> new BlockItem(CHEMICAL_PIPE.get(), new Item.Properties()));
-
-    // 创造模式ME控制器
     public static final Supplier<Block> CREATIVE_CONTROLLER = BLOCKS.register("creative_controller",
             () -> new CreativeControllerBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_LIGHT_BLUE)
@@ -65,6 +49,4 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .lightLevel(state -> state.getValue(CreativeControllerBlock.POWERED) ? 15 : 0)));
 
-    public static final Supplier<Item> CREATIVE_CONTROLLER_ITEM = ITEMS.register("creative_controller",
-            () -> new BlockItem(CREATIVE_CONTROLLER.get(), new Item.Properties()));
 }

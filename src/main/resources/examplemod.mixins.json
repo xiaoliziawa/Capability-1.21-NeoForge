@@ -5,8 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "examplemod.refmap.json",
   "mixins": [
+    "BasicCellInventoryMixin",
     "FurnaceBlockMixin",
-    "BasicCellInventoryMixin"
+    "HopperBlockEntityMixin"
   ],
   "client": [
     "LivingEntityRendererMixin"

@@ -14,17 +14,16 @@ import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
 import net.prizowo.examplemod.registry.ModItems;
 import net.prizowo.examplemod.registry.ModMenuTypes;
+import net.prizowo.examplemod.registry.ModBlockItems;
 
 @Mod("examplemod")
 public class ExampleMod {
     public static final String MODID = "examplemod";
     public ExampleMod(IEventBus modEventBus) {
         ModBlocks.BLOCKS.register(modEventBus);
-        ModBlocks.ITEMS.register(modEventBus);
-        
-        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        
+        ModBlockItems.ITEMS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
 

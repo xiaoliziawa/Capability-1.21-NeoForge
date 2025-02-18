@@ -1,0 +1,8 @@
+{
+  "block.examplemod.fluid_tank": "Fluid Tank",
+  "block.examplemod.generator": "Generator",
+  "block.examplemod.battery": "Battery",
+  "block.examplemod.chemical_pipe": "Chemical Pipe",
+  "block.examplemod.creative_controller": "Creative ME Controller",
+  "itemGroup.examplemod.creative": "Example Mod"
+} 
