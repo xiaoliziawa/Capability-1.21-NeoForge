@@ -38,7 +38,7 @@ public class CreativeControllerBlockEntity extends ControllerBlockEntity {
 
         IManagedGridNode mainNode = this.getMainNode();
         if (mainNode != null) {
-            boolean newActive = true; // 创造模式控制器始终处于激活状态
+            boolean newActive = true;
             IGrid grid = mainNode.getGrid();
             if (grid != null && grid.getPathingService() != null && 
                 grid.getPathingService().getControllerState() == ControllerState.CONTROLLER_CONFLICT) {
@@ -52,7 +52,6 @@ public class CreativeControllerBlockEntity extends ControllerBlockEntity {
                     this.level.setBlock(this.worldPosition,
                             currentState.setValue(CreativeControllerBlock.POWERED, newActive),
                             Block.UPDATE_ALL);
-                    // 通知相邻方块更新
                     this.level.updateNeighborsAt(this.worldPosition, currentState.getBlock());
                 }
             }
@@ -61,22 +60,20 @@ public class CreativeControllerBlockEntity extends ControllerBlockEntity {
 
     @Override
     protected double getFunnelPowerDemand(double maxReceived) {
-        return 0; // 创造模式控制器不需要能量
+        return 0;
     }
 
     @Override
     protected double funnelPowerIntoStorage(double power, Actionable mode) {
-        return 0; // 创造模式控制器不消耗能量，因为它总是有无限能量
+        return 0;
     }
 
     @Override
     public void onReady() {
         if (this.level != null && !this.level.isClientSide) {
             super.onReady();
-            // 在初始化时设置无限能量
             this.setInternalMaxPower(Double.MAX_VALUE);
             this.injectAEPower(Double.MAX_VALUE, Actionable.MODULATE);
-            // 确保控制器始终处于激活状态
             this.updateState();
         }
     }
