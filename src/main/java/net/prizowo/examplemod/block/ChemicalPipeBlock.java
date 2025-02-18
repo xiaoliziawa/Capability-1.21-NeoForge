@@ -50,7 +50,7 @@ public class ChemicalPipeBlock extends BasePipeBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new ChemicalPipeTileEntity(pos, state);
+        return new ChemicalPipeTileEntity(ModBlockEntities.CHEMICAL_PIPE.get(), pos, state);
     }
 
     @Nullable

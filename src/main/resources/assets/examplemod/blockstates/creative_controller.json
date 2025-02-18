@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "examplemod:block/creative_controller_offline"
+      },
+      "when": {
+        "powered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "examplemod:block/creative_controller_online"
+      },
+      "when": {
+        "powered": "true"
+      }
+    }
+  ]
+} 

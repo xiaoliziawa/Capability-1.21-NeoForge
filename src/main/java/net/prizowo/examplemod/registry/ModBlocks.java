@@ -10,6 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.ExampleMod;
 import net.prizowo.examplemod.block.BatteryBlock;
 import net.prizowo.examplemod.block.ChemicalPipeBlock;
+import net.prizowo.examplemod.block.CreativeControllerBlock;
 import net.prizowo.examplemod.block.FluidTankBlock;
 import net.prizowo.examplemod.block.GeneratorBlock;
 
@@ -55,4 +56,15 @@ public class ModBlocks {
 
     public static final Supplier<Item> CHEMICAL_PIPE_ITEM = ITEMS.register("chemical_pipe",
             () -> new BlockItem(CHEMICAL_PIPE.get(), new Item.Properties()));
+
+    // 创造模式ME控制器
+    public static final Supplier<Block> CREATIVE_CONTROLLER = BLOCKS.register("creative_controller",
+            () -> new CreativeControllerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> state.getValue(CreativeControllerBlock.POWERED) ? 15 : 0)));
+
+    public static final Supplier<Item> CREATIVE_CONTROLLER_ITEM = ITEMS.register("creative_controller",
+            () -> new BlockItem(CREATIVE_CONTROLLER.get(), new Item.Properties()));
 }

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "ae2:block/controller_column_lights",
+    "down": "ae2:block/controller_column_lights",
+    "up": "ae2:block/controller_column_lights",
+    "north": "ae2:block/controller_column_lights",
+    "south": "ae2:block/controller_column_lights",
+    "west": "ae2:block/controller_column_lights",
+    "east": "ae2:block/controller_column_lights"
+  }
+} 

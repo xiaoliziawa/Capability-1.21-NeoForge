@@ -1,0 +1,7 @@
+{
+  "parent": "examplemod:block/creative_controller_lights",
+  "textures": {
+    "block": "ae2:block/controller_powered",
+    "lights": "ae2:block/controller_lights"
+  }
+} 

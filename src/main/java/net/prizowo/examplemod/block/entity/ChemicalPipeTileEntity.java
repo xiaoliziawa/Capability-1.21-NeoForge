@@ -12,6 +12,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +26,7 @@ public class ChemicalPipeTileEntity extends BlockEntity {
     private int transferCooldown = 0; // 传输冷却时间
     private static final int COOLDOWN_TIME = 2; // 冷却时间（ticks）
 
-    public ChemicalPipeTileEntity(BlockPos pos, BlockState state) {
+    public ChemicalPipeTileEntity(BlockEntityType<ChemicalPipeTileEntity> chemicalPipeTileEntityBlockEntityType, BlockPos pos, BlockState state) {
         super(ModBlockEntities.CHEMICAL_PIPE.get(), pos, state);
         this.chemicalTank = ChemicalTankChemicalTank.create(
                 ChemicalTankTier.BASIC,

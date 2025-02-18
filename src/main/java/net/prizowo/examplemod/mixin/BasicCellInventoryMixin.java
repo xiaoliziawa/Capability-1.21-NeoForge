@@ -20,12 +20,17 @@ public class BasicCellInventoryMixin {
             target = "Lappeng/me/cells/BasicCellInventory;maxItemTypes:I", 
             ordinal = 1))
     private int redirectMaxItemTypes(BasicCellInventory instance) {
-        return 0;
+        if (this.cellType instanceof ExampleStorageCell) {
+            return this.cellType.getTotalTypes(this.i);
+        }
+        return 63;
     }
 
     @Inject(method = "canHoldNewItem", at = @At("HEAD"), cancellable = true)
     private void onCanHoldNewItem(CallbackInfoReturnable<Boolean> cir) {
-        if (this.cellType instanceof ExampleStorageCell && this.cellType.getTotalTypes(this.i) == 0) {
+        if (this.cellType != null && this.i != null && 
+            this.cellType instanceof ExampleStorageCell && 
+            this.cellType.getTotalTypes(this.i) == 0) {
             long bytesFree = ((BasicCellInventory)(Object)this).getFreeBytes();
             cir.setReturnValue(bytesFree > 0);
         }
@@ -33,7 +38,9 @@ public class BasicCellInventoryMixin {
 
     @Inject(method = "getRemainingItemTypes", at = @At("HEAD"), cancellable = true)
     private void onGetRemainingItemTypes(CallbackInfoReturnable<Long> cir) {
-        if (this.cellType instanceof ExampleStorageCell && this.cellType.getTotalTypes(this.i) == 0) {
+        if (this.cellType != null && this.i != null && 
+            this.cellType instanceof ExampleStorageCell && 
+            this.cellType.getTotalTypes(this.i) == 0) {
             cir.setReturnValue(Long.MAX_VALUE);
         }
     }

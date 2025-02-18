@@ -2,6 +2,8 @@ package net.prizowo.examplemod.registry;
 
 import appeng.api.stacks.AEKeyType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.ExampleMod;
@@ -11,7 +13,7 @@ import net.prizowo.examplemod.item.storage.StorageTier;
 import java.util.function.Supplier;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, ExampleMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, ExampleMod.MODID);
 
     private static final Item.Properties CELL_PROPERTIES = new Item.Properties().stacksTo(1);
 
@@ -34,4 +36,7 @@ public class ModItems {
     public static final Supplier<Item> STORAGE_CELL_INFINITE = ITEMS.register("storage_cell_infinite_one",
             () -> new ExampleStorageCell(CELL_PROPERTIES, StorageTier.SIZE_1M.idleDrain(),
                     Integer.MAX_VALUE, 512, 0, AEKeyType.items()));
+
+//    public static final Supplier<Item> CREATIVE_CONTROLLER = ITEMS.register("creative_controller",
+//            () -> new BlockItem(ModBlocks.CREATIVE_CONTROLLER.get(), new Item.Properties()));
 } 

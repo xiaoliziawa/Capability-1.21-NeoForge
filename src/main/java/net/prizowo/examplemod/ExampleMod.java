@@ -19,9 +19,14 @@ import net.prizowo.examplemod.registry.ModMenuTypes;
 public class ExampleMod {
     public static final String MODID = "examplemod";
     public ExampleMod(IEventBus modEventBus) {
+        // 首先注册方块
         ModBlocks.BLOCKS.register(modEventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModBlocks.ITEMS.register(modEventBus);
+        
+        // 然后注册方块实体
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        
+        // 最后注册其他内容
         ModItems.ITEMS.register(modEventBus);
         ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
