@@ -2,13 +2,15 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.prizowo.examplemod.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "refmap": "examplemod.refmap.json",
   "mixins": [
     "FurnaceBlockMixin"
   ],
   "client": [
+    "LivingEntityRendererMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

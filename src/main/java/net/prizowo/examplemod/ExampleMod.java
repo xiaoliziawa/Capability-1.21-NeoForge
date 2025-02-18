@@ -14,8 +14,6 @@ import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 
-import static net.prizowo.examplemod.recipe.Recipes.*;
-
 @Mod("examplemod")
 public class ExampleMod {
     public static final String MODID = "examplemod";
@@ -38,6 +36,7 @@ public class ExampleMod {
 
         // removeRecipe("minecraft", "furnace");
     }
+
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,

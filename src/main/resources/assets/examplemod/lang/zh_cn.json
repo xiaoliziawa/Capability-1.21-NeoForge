@@ -3,5 +3,9 @@
   "block.examplemod.chemical_pipe": "化学品管道",
   "block.examplemod.fluid_tank": "流体储罐",
   "block.examplemod.generator": "发电机",
-  "block.examplemod.battery": "电池"
+  "block.examplemod.battery": "电池",
+  
+  "config.jade.plugin_examplemod.furnace_info": "熔炉信息",
+  "jade.examplemod.energy": "能量：%s/%s FE",
+  "jade.examplemod.chemical": "化学品：%s/%s mb"
 } 
