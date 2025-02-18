@@ -15,7 +15,7 @@ public class CreativeControllerBlockEntity extends ControllerBlockEntity {
 
     public CreativeControllerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.setInternalMaxPower(Double.MAX_VALUE);
+        this.setInternalMaxPower(Integer.MAX_VALUE);
         this.setInternalPublicPowerStorage(true);
         this.getMainNode().setIdlePowerUsage(0);
     }
