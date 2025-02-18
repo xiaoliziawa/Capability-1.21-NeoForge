@@ -5,6 +5,17 @@
   "block.examplemod.generator": "发电机",
   "block.examplemod.battery": "电池",
   
+  "item.examplemod.cell_component_1m": "1M ME存储组件",
+  "item.examplemod.cell_component_4m": "4M ME存储组件",
+  "item.examplemod.cell_component_16m": "16M ME存储组件",
+  "item.examplemod.cell_component_max": "无限ME存储组件",
+  
+  "item.examplemod.storage_cell_1m": "1M ME存储元件",
+  "item.examplemod.storage_cell_4m": "4M ME存储元件",
+  "item.examplemod.storage_cell_16m": "16M ME存储元件",
+  "item.examplemod.storage_cell_max": "Int ME存储元件",
+  "item.examplemod.storage_cell_infinite_one": "存储原件",
+  
   "config.jade.plugin_examplemod.furnace_info": "熔炉信息",
   "jade.examplemod.energy": "能量：%s/%s FE",
   "jade.examplemod.chemical": "化学品：%s/%s mb"

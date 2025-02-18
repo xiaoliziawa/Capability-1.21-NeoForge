@@ -12,6 +12,7 @@ import net.prizowo.examplemod.block.entity.BatteryDevice;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
+import net.prizowo.examplemod.registry.ModItems;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 
 @Mod("examplemod")
@@ -21,6 +22,7 @@ public class ExampleMod {
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModBlocks.ITEMS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
         ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
 

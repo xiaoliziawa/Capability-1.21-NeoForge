@@ -21,7 +21,6 @@ public class GlintEntityLayer<T extends LivingEntity, M extends EntityModel<T>> 
     public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int packedLight,
                        @NotNull T entity, float limbSwing, float limbSwingAmount, float partialTicks,
                        float ageInTicks, float netHeadYaw, float headPitch) {
-
         VertexConsumer vertexConsumer3 = buffer.getBuffer(RenderType.entityGlint());
         this.getParentModel().renderToBuffer(
                 poseStack,

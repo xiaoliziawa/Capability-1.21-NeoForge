@@ -34,6 +34,12 @@ public class ModCreativeTab {
 
                         addBlock(Blocks.FURNACE);
 
+                        ModItems.ITEMS.getEntries().forEach(item -> {
+                            Item itemItem = item.get();
+                            if (itemItem != null) {
+                                output.accept(new ItemStack(itemItem));
+                            }
+                        });
 
                         ModBlocks.ITEMS.getEntries().forEach(item ->
                                 output.accept(new ItemStack(item.get())));

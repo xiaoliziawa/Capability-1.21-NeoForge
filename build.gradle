@@ -105,6 +105,8 @@ dependencies {
     implementation "blank:Pipez-1.21.1-1.2.19"
     implementation "blank:FarmersDelight-1.21.1:1.2.7"
     implementation "blank:jei-1.21.1:19.21.0.247"
+    implementation "blank:AE2-1.21.1:19.0.27"
+    implementation "blank:Guideme-1.21.1:21.1.0"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
