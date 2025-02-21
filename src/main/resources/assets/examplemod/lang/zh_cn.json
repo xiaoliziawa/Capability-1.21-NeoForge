@@ -19,5 +19,7 @@
   
   "config.jade.plugin_examplemod.furnace_info": "熔炉信息",
   "jade.examplemod.energy": "能量：%s/%s FE",
-  "jade.examplemod.chemical": "化学品：%s/%s mb"
+  "jade.examplemod.chemical": "化学品：%s/%s mb",
+
+  "entity.minecraft.villager.examplemod.enchanter": "附魔师"
 } 

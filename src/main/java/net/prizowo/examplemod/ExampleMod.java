@@ -15,6 +15,8 @@ import net.prizowo.examplemod.registry.ModCreativeTab;
 import net.prizowo.examplemod.registry.ModItems;
 import net.prizowo.examplemod.registry.ModMenuTypes;
 import net.prizowo.examplemod.registry.ModBlockItems;
+import net.prizowo.examplemod.villagers.ModVillagers;
+import net.prizowo.examplemod.villagers.ModPOIs;
 
 @Mod("examplemod")
 public class ExampleMod {
@@ -26,6 +28,8 @@ public class ExampleMod {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
+        ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
+        ModPOIs.POI_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
 
