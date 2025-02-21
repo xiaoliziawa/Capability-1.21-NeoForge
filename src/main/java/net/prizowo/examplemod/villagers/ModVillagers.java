@@ -46,7 +46,7 @@ public class ModVillagers {
         if (event.getType() == ENCHANTER.get()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             
-            // 新手级别 - 低级附魔书
+            // 新手 - 低级附魔书
             trades.get(1).add((trader, rand) -> {
                 List<Holder<Enchantment>> enchantments = new ArrayList<>();
                 trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
@@ -56,7 +56,7 @@ public class ModVillagers {
                 return new MerchantOffer(new ItemCost(Items.EMERALD, 5 + rand.nextInt(3)), Optional.empty(), book, 12, 2, 0.05f);
             });
 
-            // 学徒级别 - 中低级附魔书
+            // 学徒 - 中低级附魔书
             trades.get(2).add((trader, rand) -> {
                 List<Holder<Enchantment>> enchantments = new ArrayList<>();
                 trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
@@ -66,7 +66,7 @@ public class ModVillagers {
                 return new MerchantOffer(new ItemCost(Items.EMERALD, 10 + rand.nextInt(5)), Optional.empty(), book, 12, 5, 0.05f);
             });
 
-            // 老手级别 - 中级附魔书
+            // 老手 - 中级附魔书
             trades.get(3).add((trader, rand) -> {
                 List<Holder<Enchantment>> enchantments = new ArrayList<>();
                 trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
@@ -76,7 +76,7 @@ public class ModVillagers {
                 return new MerchantOffer(new ItemCost(Items.EMERALD, 15 + rand.nextInt(5)), Optional.empty(), book, 12, 10, 0.05f);
             });
 
-            // 专家级别 - 高级附魔书
+            // 专家 - 高级附魔书
             trades.get(4).add((trader, rand) -> {
                 List<Holder<Enchantment>> enchantments = new ArrayList<>();
                 trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
@@ -86,7 +86,7 @@ public class ModVillagers {
                 return new MerchantOffer(new ItemCost(Items.EMERALD, 20 + rand.nextInt(5)), Optional.empty(), book, 12, 15, 0.05f);
             });
 
-            // 大师级别 - 最高级附魔书
+            // 大师 - 最高级附魔书
             trades.get(5).add((trader, rand) -> {
                 List<Holder<Enchantment>> enchantments = new ArrayList<>();
                 trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
