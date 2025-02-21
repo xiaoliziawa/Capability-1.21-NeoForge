@@ -23,7 +23,7 @@ public class ModPOIs {
     public static final Supplier<PoiType> ENCHANTER_POI = POI_TYPES.register("enchanter",
             () -> new PoiType(
                     ImmutableSet.copyOf(Blocks.ENCHANTING_TABLE.getStateDefinition().getPossibleStates()),
-                    1, // 最大票数（同时只能有一个村民使用这个工作站）
-                    8  // 有效范围（村民可以在8格范围内检测到这个工作站）
+                    1,
+                    8
             ));
 } 

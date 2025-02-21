@@ -1,11 +1,11 @@
 package net.prizowo.examplemod.villagers;
 
 import com.google.common.collect.ImmutableSet;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
@@ -22,7 +22,6 @@ import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.prizowo.examplemod.ExampleMod;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.util.RandomSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,46 +44,81 @@ public class ModVillagers {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
         if (event.getType() == ENCHANTER.get()) {
-            event.getTrades().get(1).add(new EnchantedBookForEmeralds()); // 新手级别
-            event.getTrades().get(2).add(new EnchantedBookForEmeralds()); // 学徒级别
-            event.getTrades().get(3).add(new EnchantedBookForEmeralds()); // 老手级别
-            event.getTrades().get(4).add(new EnchantedBookForEmeralds()); // 专家级别
-            event.getTrades().get(5).add(new EnchantedBookForEmeralds()); // 大师级别
-        }
-    }
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            
+            // 新手级别 - 低级附魔书
+            trades.get(1).add((trader, rand) -> {
+                List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                int level = Math.min(enchantment.value().getMaxLevel(), 1);
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level));
+                return new MerchantOffer(new ItemCost(Items.EMERALD, 5 + rand.nextInt(3)), Optional.empty(), book, 12, 2, 0.05f);
+            });
 
-    public static class EnchantedBookForEmeralds implements VillagerTrades.ItemListing {
-        @Override
-        public MerchantOffer getOffer(Entity trader, RandomSource random) {
-            // 获取所有可用的附魔
-            List<Holder<Enchantment>> allEnchantments = new ArrayList<>();
-            trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(allEnchantments::add);
+            // 学徒级别 - 中低级附魔书
+            trades.get(2).add((trader, rand) -> {
+                List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                int level = Math.min(enchantment.value().getMaxLevel(), 2);
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level));
+                return new MerchantOffer(new ItemCost(Items.EMERALD, 10 + rand.nextInt(5)), Optional.empty(), book, 12, 5, 0.05f);
+            });
 
-            // 创建三本不同的附魔书
-            ItemStack[] books = new ItemStack[3];
-            int totalEmeralds = 0;
+            // 老手级别 - 中级附魔书
+            trades.get(3).add((trader, rand) -> {
+                List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                int level = Math.min(enchantment.value().getMaxLevel(), 3);
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level));
+                return new MerchantOffer(new ItemCost(Items.EMERALD, 15 + rand.nextInt(5)), Optional.empty(), book, 12, 10, 0.05f);
+            });
 
-            // 创建三本不同的附魔书
-            for (int i = 0; i < 3; i++) {
-                Holder<Enchantment> enchantmentHolder = allEnchantments.get(random.nextInt(allEnchantments.size()));
-                int level = Math.min(enchantmentHolder.value().getMaxLevel(), i + 3); // 等级从3开始递增
+            // 专家级别 - 高级附魔书
+            trades.get(4).add((trader, rand) -> {
+                List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                int level = Math.min(enchantment.value().getMaxLevel(), 4);
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level));
+                return new MerchantOffer(new ItemCost(Items.EMERALD, 20 + rand.nextInt(5)), Optional.empty(), book, 12, 15, 0.05f);
+            });
 
-                // 创建附魔书
-                books[i] = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentHolder, level));
+            // 大师级别 - 最高级附魔书
+            trades.get(5).add((trader, rand) -> {
+                List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                int level = enchantment.value().getMaxLevel(); // 直接使用最高等级
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level));
+                return new MerchantOffer(new ItemCost(Items.EMERALD, 30 + rand.nextInt(5)), Optional.empty(), book, 12, 30, 0.05f);
+            });
 
-                // 累加价格，降低基础价格
-                totalEmeralds += 3 + (level * 3) + random.nextInt(5); // 降低基础价格
+            // 为每个等级添加额外的交易选项
+            for (int level = 1; level <= 5; level++) {
+                final int villagerLevel = level;
+                // 添加第二个交易选项
+                trades.get(level).add((trader, rand) -> {
+                    List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                    trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                    Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                    int enchLevel = Math.min(enchantment.value().getMaxLevel(), villagerLevel);
+                    ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, enchLevel));
+                    return new MerchantOffer(new ItemCost(Items.EMERALD, (5 * villagerLevel) + rand.nextInt(5)), Optional.empty(), book, 12, 5 * villagerLevel, 0.05f);
+                });
+                
+                // 添加第三个交易选项
+                trades.get(level).add((trader, rand) -> {
+                    List<Holder<Enchantment>> enchantments = new ArrayList<>();
+                    trader.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().forEach(enchantments::add);
+                    Holder<Enchantment> enchantment = enchantments.get(rand.nextInt(enchantments.size()));
+                    int enchLevel = Math.min(enchantment.value().getMaxLevel(), villagerLevel);
+                    ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, enchLevel));
+                    return new MerchantOffer(new ItemCost(Items.EMERALD, (5 * villagerLevel) + rand.nextInt(5)), Optional.empty(), book, 12, 5 * villagerLevel, 0.05f);
+                });
             }
-
-            // 创建交易选项，支持多个输出物品
-            return new MerchantOffer(
-                new ItemCost(Items.EMERALD, totalEmeralds), // 总价格
-                Optional.empty(), // 第二个输入物品（空）
-                books[0], // 第一本书作为输出
-                6, // 最大使用次数
-                20, // 村民经验
-                0.1f // 价格乘数
-            );
         }
     }
 }
