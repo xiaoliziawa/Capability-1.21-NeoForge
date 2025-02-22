@@ -6,8 +6,12 @@
   "refmap": "examplemod.refmap.json",
   "mixins": [
     "BasicCellInventoryMixin",
+    "DisplayAccessor.BlockDisplayMixin",
+    "DisplayAccessor.DisplayEntityMixin",
     "FurnaceBlockMixin",
-    "HopperBlockEntityMixin"
+    "HopperBlockEntityMixin",
+    "SignBlockEntityMixin",
+    "DisplayAccessor.TextDisplayMixin"
   ],
   "client": [
     "LivingEntityRendererMixin"

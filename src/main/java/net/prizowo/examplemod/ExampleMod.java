@@ -5,10 +5,12 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.prizowo.examplemod.api.IEnergyFurnace;
 import net.prizowo.examplemod.block.entity.ChemicalPipeTileEntity;
 import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
+import net.prizowo.examplemod.event.DisplayEvents;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
@@ -18,9 +20,10 @@ import net.prizowo.examplemod.registry.ModBlockItems;
 import net.prizowo.examplemod.villagers.ModVillagers;
 import net.prizowo.examplemod.villagers.ModPOIs;
 
-@Mod("examplemod")
+@Mod(ExampleMod.MODID)
 public class ExampleMod {
     public static final String MODID = "examplemod";
+    
     public ExampleMod(IEventBus modEventBus) {
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockItems.ITEMS.register(modEventBus);
@@ -32,6 +35,8 @@ public class ExampleMod {
         ModPOIs.POI_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
+        
+        NeoForge.EVENT_BUS.register(new DisplayEvents());
 
         // removeMod("mekanism");
         // removeMod("farmersdelight");
