@@ -67,7 +67,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity implements ISignD
             if (textDisplay == null) return;
 
             boolean isHangingSign = (Object)this instanceof HangingSignBlockEntity;
-            double yOffset = isHangingSign ? -0.5 : 1.5;
+            double yOffset = isHangingSign ? -1.0 : 1.5;
 
             textDisplay.setPos(pos.getX() + 0.5, pos.getY() + yOffset, pos.getZ() + 0.5);
 

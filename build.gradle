@@ -9,9 +9,7 @@ version = mod_version
 group = mod_group_id
 
 repositories {
-    flatDir {
-        dir 'libs'
-    }
+    
 }
 
 base {
@@ -98,15 +96,8 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-
-    implementation "blank:Mekanism-1.21.1:10.7.8.70"
-    implementation "blank:JadeAddons-1.21.1:6.0.1"
-    implementation "blank:Jade-1.21.1-15.9.3"
-    implementation "blank:Pipez-1.21.1-1.2.19"
-    implementation "blank:FarmersDelight-1.21.1:1.2.7"
-    implementation "blank:jei-1.21.1:19.21.0.247"
-    implementation "blank:AE2-1.21.1:19.0.27"
-    implementation "blank:Guideme-1.21.1:21.1.0"
+    implementation fileTree(dir: 'libs/lib', include: ['*.jar'])
+    runtimeOnly fileTree(dir: 'libs/only', include: ['*.jar'])
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
