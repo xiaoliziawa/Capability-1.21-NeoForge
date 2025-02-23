@@ -11,6 +11,7 @@ import net.prizowo.examplemod.block.entity.ChemicalPipeTileEntity;
 import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
 import net.prizowo.examplemod.event.DisplayEvents;
+import net.prizowo.examplemod.event.SignDisplayEvents;
 import net.prizowo.examplemod.registry.ModBlockEntities;
 import net.prizowo.examplemod.registry.ModBlocks;
 import net.prizowo.examplemod.registry.ModCreativeTab;
@@ -37,6 +38,7 @@ public class ExampleMod {
         modEventBus.addListener(this::registerCapabilities);
         
         NeoForge.EVENT_BUS.register(new DisplayEvents());
+        NeoForge.EVENT_BUS.register(new SignDisplayEvents());
 
         // removeMod("mekanism");
         // removeMod("farmersdelight");
