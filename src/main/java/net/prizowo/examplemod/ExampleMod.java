@@ -1,5 +1,8 @@
 package net.prizowo.examplemod;
+
+import blusunrize.immersiveengineering.api.ManualHelper;
 import blusunrize.immersiveengineering.api.multiblocks.MultiblockHandler;
+import blusunrize.lib.manual.ManualEntry;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -17,6 +20,8 @@ import net.prizowo.examplemod.multiblock.ExampleMultiblock;
 import net.prizowo.examplemod.registry.*;
 import net.prizowo.examplemod.villagers.ModPOIs;
 import net.prizowo.examplemod.villagers.ModVillagers;
+import net.minecraft.resources.ResourceLocation;
+
 
 @Mod(ExampleMod.MODID)
 public class ExampleMod {
@@ -37,7 +42,19 @@ public class ExampleMod {
     }
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            MultiblockHandler.registerMultiblock(new ExampleMultiblock());
+            var multiblock = new ExampleMultiblock();
+            MultiblockHandler.registerMultiblock(multiblock);
+            
+            // 沉浸手册页面
+            if (ManualHelper.getManual() != null) {
+                var manual = ManualHelper.getManual();
+                var root = manual.getRoot();
+                
+                var builder = new ManualEntry.ManualEntryBuilder(manual);
+                builder.readFromFile(ResourceLocation.fromNamespaceAndPath(MODID, "example_multiblock"));
+                
+                manual.addEntry(root, builder.create());
+            }
         });
     }
     private void registerCapabilities(RegisterCapabilitiesEvent event) {

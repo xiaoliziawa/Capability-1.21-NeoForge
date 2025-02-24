@@ -1,0 +1,3 @@
+Example Multiblock
+A Multiblock Structure Example
+<&multiblock>
