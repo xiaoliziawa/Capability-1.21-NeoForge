@@ -102,7 +102,6 @@ public class ExampleMultiblock extends TemplateMultiblock {
 
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
