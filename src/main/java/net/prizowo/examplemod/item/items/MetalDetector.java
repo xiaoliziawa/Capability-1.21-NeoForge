@@ -17,6 +17,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.prizowo.examplemod.ExampleMod;
 import org.jetbrains.annotations.NotNull;
 
+
 /**
  * 金属探测器
  * 用于探测地下的矿物
