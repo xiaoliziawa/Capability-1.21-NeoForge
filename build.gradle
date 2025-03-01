@@ -9,7 +9,29 @@ version = mod_version
 group = mod_group_id
 
 repositories {
-
+    maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
+    maven { url = "https://mvn.devos.one/snapshots" } // Registrate
+    maven {
+        url "https://maven.saps.dev/releases"
+    }
+    maven {
+        url "https://api.modrinth.com/maven"
+    }
+    maven {
+        url "https://maven.architectury.dev"
+    }
+    maven {
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
+    }
 }
 
 base {
@@ -98,6 +120,13 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     implementation fileTree(dir: 'libs/lib', include: ['*.jar'])
     runtimeOnly fileTree(dir: 'libs/only', include: ['*.jar'])
+
+    // Create mod dependencies
+    implementation   "com.simibubi.create:create-${minecraft_version}:${create_version}"
+    implementation   "net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}"
+    compileOnly  "dev.engine-room.flywheel:flywheel-neoforge-api-${flywheel_minecraft_version}:${flywheel_version}"
+    runtimeOnly  "dev.engine-room.flywheel:flywheel-neoforge-${flywheel_minecraft_version}:${flywheel_version}"
+    implementation   "com.tterrag.registrate:Registrate:${registrate_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

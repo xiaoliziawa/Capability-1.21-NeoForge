@@ -3,6 +3,7 @@ package net.prizowo.examplemod;
 import blusunrize.immersiveengineering.api.ManualHelper;
 import blusunrize.immersiveengineering.api.multiblocks.MultiblockHandler;
 import blusunrize.lib.manual.ManualEntry;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -21,7 +22,11 @@ import net.prizowo.examplemod.registry.*;
 import net.prizowo.examplemod.villagers.ModPOIs;
 import net.prizowo.examplemod.villagers.ModVillagers;
 import net.minecraft.resources.ResourceLocation;
-
+import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.EquipmentSlot;
 
 @Mod(ExampleMod.MODID)
 public class ExampleMod {
@@ -39,7 +44,21 @@ public class ExampleMod {
         modEventBus.addListener(this::registerCapabilities);
         NeoForge.EVENT_BUS.register(new DisplayEvents());
         NeoForge.EVENT_BUS.register(new SignDisplayEvents());
+        
     }
+
+//    private void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+//        if (event.getItemStack().is(Items.DIAMOND_SWORD)) {
+//            if (event.getHand() == InteractionHand.MAIN_HAND) {
+//                Level level = event.getLevel();
+//                if (level instanceof ServerLevel serverLevel) {
+//                    event.getItemStack().hurtAndBreak(1, event.getEntity(), EquipmentSlot.MAINHAND);
+//                }
+//                event.getEntity().swing(InteractionHand.MAIN_HAND, true);
+//            }
+//        }
+//    }
+    
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             var multiblock = new ExampleMultiblock();
