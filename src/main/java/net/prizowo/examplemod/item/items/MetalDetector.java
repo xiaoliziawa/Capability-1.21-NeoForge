@@ -17,13 +17,6 @@ import net.neoforged.neoforge.common.Tags;
 import net.prizowo.examplemod.ExampleMod;
 import org.jetbrains.annotations.NotNull;
 
-
-/**
- * 金属探测器
- * 用于探测地下的矿物
- * 
- * @author Qi-Month
- */
 public class MetalDetector extends Item {
     private static final int MAX_DEPTH = 64; // 最大探测深度
     private static final int MIN_DEPTH = 0;  // 最小探测深度
