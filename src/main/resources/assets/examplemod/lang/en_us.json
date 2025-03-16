@@ -4,5 +4,25 @@
   "block.examplemod.battery": "Battery",
   "block.examplemod.chemical_pipe": "Chemical Pipe",
   "block.examplemod.creative_controller": "Creative ME Controller",
-  "itemGroup.examplemod.creative": "Example Mod"
+  "itemGroup.examplemod.creative": "Example Mod",
+
+  "item.examplemod.cell_component_1m": "1M ME Storage Component",
+  "item.examplemod.cell_component_4m": "4M ME Storage Component",
+  "item.examplemod.cell_component_16m": "16M ME Storage Component",
+  "item.examplemod.cell_component_max": "Infinite ME Storage Component",
+  
+  "item.examplemod.storage_cell_1m": "1M ME Storage Cell",
+  "item.examplemod.storage_cell_4m": "4M ME Storage Cell",
+  "item.examplemod.storage_cell_16m": "16M ME Storage Cell",
+  "item.examplemod.storage_cell_max": "Int ME Storage Cell",
+  "item.examplemod.storage_cell_infinite_one": "Storage Cell",
+  
+  "config.jade.plugin_examplemod.furnace_info": "Furnace Info",
+  "jade.examplemod.energy": "Energy: %s/%s FE",
+  "jade.examplemod.chemical": "Chemical: %s/%s mb",
+
+  "entity.minecraft.villager.examplemod.enchanter": "Enchanter",
+
+  "enchantment.examplemod.wither_blade": "Wither Blade",
+  "enchantment.examplemod.wither_blade.desc": "Has a chance to apply wither effect when attacking mobs. Effect scales with enchantment level."
 } 

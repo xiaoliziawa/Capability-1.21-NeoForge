@@ -21,5 +21,8 @@
   "jade.examplemod.energy": "能量：%s/%s FE",
   "jade.examplemod.chemical": "化学品：%s/%s mb",
 
-  "entity.minecraft.villager.examplemod.enchanter": "附魔师"
+  "entity.minecraft.villager.examplemod.enchanter": "附魔师",
+
+  "enchantment.examplemod.wither_blade": "凋零之刃",
+  "enchantment.examplemod.wither_blade.desc": "攻击生物时有概率造成凋零效果，效果随附魔等级提升"
 } 

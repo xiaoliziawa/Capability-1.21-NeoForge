@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.examplemod.wither_blade"
+  },
+  "max_cost": {
+    "base": 15,
+    "per_level_above_first": 0
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#examplemod:enchantable/swords",
+  "weight": 4
+}

@@ -14,7 +14,9 @@ import net.prizowo.examplemod.api.IEnergyFurnace;
 import net.prizowo.examplemod.block.entity.ChemicalPipeTileEntity;
 import net.prizowo.examplemod.block.entity.GeneratorDevice;
 import net.prizowo.examplemod.block.entity.BatteryDevice;
+import net.prizowo.examplemod.enchantment.ModEnchantments;
 import net.prizowo.examplemod.event.DisplayEvents;
+import net.prizowo.examplemod.event.EnchantmentEvents;
 import net.prizowo.examplemod.event.SignDisplayEvents;
 import net.prizowo.examplemod.multiblock.ExampleMultiblock;
 import net.prizowo.examplemod.registry.*;
@@ -34,11 +36,12 @@ public class ExampleMod {
         ModCreativeTab.CREATIVE_MODE_TABS.register(modEventBus);
         ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
         ModPOIs.POI_TYPES.register(modEventBus);
+        ModEnchantments.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerCapabilities);
         NeoForge.EVENT_BUS.register(new DisplayEvents());
         NeoForge.EVENT_BUS.register(new SignDisplayEvents());
-        
+        NeoForge.EVENT_BUS.register(EnchantmentEvents.class);
     }
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
