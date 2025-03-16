@@ -3,7 +3,6 @@ package net.prizowo.examplemod;
 import blusunrize.immersiveengineering.api.ManualHelper;
 import blusunrize.immersiveengineering.api.multiblocks.MultiblockHandler;
 import blusunrize.lib.manual.ManualEntry;
-import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -22,7 +21,6 @@ import net.prizowo.examplemod.registry.*;
 import net.prizowo.examplemod.villagers.ModPOIs;
 import net.prizowo.examplemod.villagers.ModVillagers;
 import net.minecraft.resources.ResourceLocation;
-import org.checkerframework.checker.units.qual.C;
 
 @Mod(ExampleMod.MODID)
 public class ExampleMod {
@@ -42,18 +40,6 @@ public class ExampleMod {
         NeoForge.EVENT_BUS.register(new SignDisplayEvents());
         
     }
-
-//    private void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-//        if (event.getItemStack().is(Items.DIAMOND_SWORD)) {
-//            if (event.getHand() == InteractionHand.MAIN_HAND) {
-//                Level level = event.getLevel();
-//                if (level instanceof ServerLevel serverLevel) {
-//                    event.getItemStack().hurtAndBreak(1, event.getEntity(), EquipmentSlot.MAINHAND);
-//                }
-//                event.getEntity().swing(InteractionHand.MAIN_HAND, true);
-//            }
-//        }
-//    }
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             var multiblock = new ExampleMultiblock();
@@ -120,7 +106,7 @@ public class ExampleMod {
         event.registerBlockEntity(
                 mekanism.common.capabilities.Capabilities.CHEMICAL.block(),
                 ModBlockEntities.CHEMICAL_PIPE.get(),
-                (blockEntity, direction) -> ((ChemicalPipeTileEntity)blockEntity).getChemicalHandler(direction)
+                ChemicalPipeTileEntity::getChemicalHandler
         );
     }
 }

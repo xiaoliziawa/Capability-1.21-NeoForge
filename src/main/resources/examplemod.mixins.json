@@ -8,6 +8,7 @@
     "BasicCellInventoryMixin",
     "FurnaceBlockMixin",
     "HopperBlockEntityMixin",
+    "HopperItemFrameFilterMixin",
     "SignBlockEntityMixin",
     "create.ChainConveyorBlockEntityMixin",
     "create.ChainConveyorBlockMixin",
