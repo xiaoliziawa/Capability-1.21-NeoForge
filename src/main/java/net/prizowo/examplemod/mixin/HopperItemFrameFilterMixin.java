@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.entity.Hopper;
 import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -21,7 +22,9 @@ import javax.annotation.Nullable;
 @Mixin(HopperBlockEntity.class)
 public class HopperItemFrameFilterMixin {
 
+    @Unique
     private static final Map<BlockPos, Set<ItemFrame>> FRAMES_CACHE = new WeakHashMap<>();
+    @Unique
     private static final Map<BlockPos, Set<ItemStack>> FILTERS_CACHE = new WeakHashMap<>();
 
     @Shadow
@@ -30,12 +33,12 @@ public class HopperItemFrameFilterMixin {
     }
 
     @Shadow
-    private static ItemStack addItem(@Nullable Container source, Container destination, ItemStack stack, @Nullable Direction direction) {
+    public static ItemStack addItem(@Nullable Container source, Container destination, ItemStack stack, @Nullable Direction direction) {
         throw new AssertionError();
     }
 
     @Shadow
-    private static Container getContainerAt(Level level, BlockPos pos) {
+    public static Container getContainerAt(Level level, BlockPos pos) {
         throw new AssertionError();
     }
 
@@ -103,26 +106,20 @@ public class HopperItemFrameFilterMixin {
     private static Set<ItemStack> getFilterItems(Level level, HopperBlockEntity hopper) {
         BlockPos hopperPos = hopper.getBlockPos();
 
-        // 获取当前附着的所有展示框
         List<ItemFrame> currentFrames = findAttachedItemFrames(level, hopper);
         Set<ItemFrame> cachedFrames = FRAMES_CACHE.get(hopperPos);
 
-        // 检查是否需要更新缓存
         boolean needsUpdate = false;
 
-        // 如果缓存存在，检查展示框数量是否变化
         if (cachedFrames != null) {
-            // 检查是否有新增或移除的展示框
             if (cachedFrames.size() != currentFrames.size()) {
                 needsUpdate = true;
             } else {
-                // 检查每个展示框中的物品是否发生变化
                 for (ItemFrame frame : cachedFrames) {
                     if (frame.isRemoved() || !currentFrames.contains(frame)) {
                         needsUpdate = true;
                         break;
                     }
-                    // 检查展示框中的物品是否变化
                     ItemStack displayedItem = frame.getItem();
                     boolean itemFound = false;
                     for (ItemStack cachedItem : FILTERS_CACHE.getOrDefault(hopperPos, new HashSet<>())) {
@@ -141,7 +138,6 @@ public class HopperItemFrameFilterMixin {
             needsUpdate = true;
         }
 
-        // 如果需要更新，重新构建过滤列表
         if (needsUpdate) {
             Set<ItemStack> newFilters = new HashSet<>();
             Set<ItemFrame> newFrames = new HashSet<>();
@@ -165,7 +161,6 @@ public class HopperItemFrameFilterMixin {
             }
         }
 
-        // 如果不需要更新，返回现有缓存
         return FILTERS_CACHE.getOrDefault(hopperPos, new HashSet<>());
     }
 
