@@ -48,7 +48,7 @@ public class HopperItemFrameFilterMixin {
     }
 
     /**
-     * 拦截从一个槽位到另一个槽位的物品传输
+     * 拦截从槽位的物品传输
      */
     @Inject(method = "tryMoveInItem", at = @At("HEAD"), cancellable = true)
     private static void onTryMoveInItem(Container source, Container destination, ItemStack stack, int slot, Direction direction, CallbackInfoReturnable<ItemStack> cir) {
@@ -101,7 +101,7 @@ public class HopperItemFrameFilterMixin {
     }
 
     /**
-     * 获取附着在漏斗上的所有展示框中的物
+     * 获取附着在漏斗上的所有展示框中的物品
      */
     private static Set<ItemStack> getFilterItems(Level level, HopperBlockEntity hopper) {
         BlockPos hopperPos = hopper.getBlockPos();
